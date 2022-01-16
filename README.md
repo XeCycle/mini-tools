@@ -12,7 +12,7 @@ Such tools may be of interest when
 
 As an example `pause.c` implements a command similar to the one used
 by `docker://k8s.gcr.io/pause`; on my machine this compiles to an
-executable of size 872 BYTES.
+executable of size 744 BYTES.
 
 I have not yet decided which license I'd like to release these under,
 consider these code as "license unclear" for now.  For sure I would

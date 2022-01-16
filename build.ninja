@@ -1,8 +1,8 @@
 rule cc
-  command = clang -Os -fno-stack-protector -fno-asynchronous-unwind-tables -c -o $out $in
+  command = clang -Os -flto -fno-stack-protector -fno-asynchronous-unwind-tables -c -o $out $in
 
 rule ld
-  command = ld.lld -s -o $out $in && strip -R .comment $out
+  command = ld.lld --lto-O1 -s -o $out $in && strip -R .comment $out
 
 build minirt.o: cc minirt.c
 build minisys.o: cc minisys.c | minisys.h

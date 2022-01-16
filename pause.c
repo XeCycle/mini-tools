@@ -5,7 +5,7 @@ static void on_sigterm(int sig)
   _exit(0);
 }
 
-__attribute__((noreturn))
+__attribute__((noreturn, used))
 void main_noret(int argc, char** argv, char** envp)
 {
   struct sigaction sa = {
