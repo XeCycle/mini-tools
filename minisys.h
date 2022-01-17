@@ -11,3 +11,7 @@ long sigaction(int signum,
 
 __attribute__((noreturn))
 void _exit(int exit_status);
+
+long renameat2(int olddirfd, char const* oldpath,
+               int newdirfd, char const* newpath,
+               unsigned flags);

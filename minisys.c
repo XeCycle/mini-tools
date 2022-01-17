@@ -114,3 +114,13 @@ void _exit(int exit_status)
 {
   syscall1(__NR_exit_group, exit_status);
 }
+
+long renameat2(int olddirfd, char const* oldpath,
+               int newdirfd, char const* newpath,
+               unsigned flags)
+{
+  return syscall5(__NR_renameat2,
+                  olddirfd, (long)oldpath,
+                  newdirfd, (long)newpath,
+                  (unsigned long)flags);
+}

@@ -6,5 +6,9 @@ rule ld
 
 build minirt.o: cc minirt.c
 build minisys.o: cc minisys.c | minisys.h
+
 build pause.o: cc pause.c | minisys.h
 build pause: ld minirt.o minisys.o pause.o
+
+build exchange-file.o: cc exchange-file.c | minisys.h
+build exchange-file: ld minirt.o minisys.o exchange-file.o
