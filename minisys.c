@@ -124,3 +124,13 @@ long renameat2(int olddirfd, char const* oldpath,
                   newdirfd, (long)newpath,
                   (unsigned long)flags);
 }
+
+int socket(int domain, int type, int protocol)
+{
+  return syscall3(__NR_socket, domain, type, protocol);
+}
+
+int connect(int sockfd, struct sockaddr const* addr, unsigned addrlen)
+{
+  return syscall3(__NR_connect, sockfd, addr, addrlen);
+}

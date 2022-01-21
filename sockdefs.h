@@ -1,0 +1,174 @@
+#pragma once
+
+#include <stdint.h>
+
+typedef unsigned short int sa_family_t;
+
+enum {
+  MINISYS_SOCKADDR_BASE_SIZE = 16,
+};
+
+struct sockaddr {
+  sa_family_t sa_family;
+  char sa_data[MINISYS_SOCKADDR_BASE_SIZE - sizeof(sa_family_t)];
+};
+
+typedef uint32_t in_addr_t;
+typedef uint16_t in_port_t;
+struct in_addr {
+  in_addr_t s_addr;
+};
+
+struct sockaddr_in {
+  sa_family_t sin_family;
+  in_port_t sin_port;
+  struct in_addr sin_addr;
+  unsigned char sin_zero[sizeof(struct sockaddr) - 8];
+};
+
+enum {
+  PF_UNSPEC = 0,
+  PF_LOCAL = 1,
+  PF_UNIX = PF_LOCAL,
+  PF_FILE = PF_LOCAL,
+  PF_INET = 2,
+  PF_AX25 = 3,
+  PF_IPX = 4,
+  PF_APPLETALK = 5,
+  PF_NETROM = 6,
+  PF_BRIDGE = 7,
+  PF_ATMPVC = 8,
+  PF_X25 = 9,
+  PF_INET6 = 10,
+  PF_ROSE = 11,
+  PF_DECnet = 12,
+  PF_NETBEUI = 13,
+  PF_SECURITY = 14,
+  PF_KEY = 15,
+  PF_NETLINK = 16,
+  PF_ROUTE = PF_NETLINK,
+  PF_PACKET = 17,
+  PF_ASH = 18,
+  PF_ECONET = 19,
+  PF_ATMSVC = 20,
+  PF_RDS = 21,
+  PF_SNA = 22,
+  PF_IRDA = 23,
+  PF_PPPOX = 24,
+  PF_WANPIPE = 25,
+  PF_LLC = 26,
+  PF_IB = 27,
+  PF_MPLS = 28,
+  PF_CAN = 29,
+  PF_TIPC = 30,
+  PF_BLUETOOTH = 31,
+  PF_IUCV = 32,
+  PF_RXRPC = 33,
+  PF_ISDN = 34,
+  PF_PHONET = 35,
+  PF_IEEE802154 = 36,
+  PF_CAIF = 37,
+  PF_ALG = 38,
+  PF_NFC = 39,
+  PF_VSOCK = 40,
+  PF_KCM = 41,
+  PF_QIPCRTR = 42,
+  PF_SMC = 43,
+  PF_XDP = 44,
+  PF_MAX = 45,
+};
+
+enum {
+  AF_UNSPEC = PF_UNSPEC,
+  AF_LOCAL = PF_LOCAL,
+  AF_UNIX = PF_UNIX,
+  AF_FILE = PF_FILE,
+  AF_INET = PF_INET,
+  AF_AX25 = PF_AX25,
+  AF_IPX = PF_IPX,
+  AF_APPLETALK = PF_APPLETALK,
+  AF_NETROM = PF_NETROM,
+  AF_BRIDGE = PF_BRIDGE,
+  AF_ATMPVC = PF_ATMPVC,
+  AF_X25 = PF_X25,
+  AF_INET6 = PF_INET6,
+  AF_ROSE = PF_ROSE,
+  AF_DECnet = PF_DECnet,
+  AF_NETBEUI = PF_NETBEUI,
+  AF_SECURITY = PF_SECURITY,
+  AF_KEY = PF_KEY,
+  AF_NETLINK = PF_NETLINK,
+  AF_ROUTE = PF_ROUTE,
+  AF_PACKET = PF_PACKET,
+  AF_ASH = PF_ASH,
+  AF_ECONET = PF_ECONET,
+  AF_ATMSVC = PF_ATMSVC,
+  AF_RDS = PF_RDS,
+  AF_SNA = PF_SNA,
+  AF_IRDA = PF_IRDA,
+  AF_PPPOX = PF_PPPOX,
+  AF_WANPIPE = PF_WANPIPE,
+  AF_LLC = PF_LLC,
+  AF_IB = PF_IB,
+  AF_MPLS = PF_MPLS,
+  AF_CAN = PF_CAN,
+  AF_TIPC = PF_TIPC,
+  AF_BLUETOOTH = PF_BLUETOOTH,
+  AF_IUCV = PF_IUCV,
+  AF_RXRPC = PF_RXRPC,
+  AF_ISDN = PF_ISDN,
+  AF_PHONET = PF_PHONET,
+  AF_IEEE802154 = PF_IEEE802154,
+  AF_CAIF = PF_CAIF,
+  AF_ALG = PF_ALG,
+  AF_NFC = PF_NFC,
+  AF_VSOCK = PF_VSOCK,
+  AF_KCM = PF_KCM,
+  AF_QIPCRTR = PF_QIPCRTR,
+  AF_SMC = PF_SMC,
+  AF_XDP = PF_XDP,
+  AF_MAX = PF_MAX,
+};
+
+enum {
+  IPPROTO_IP = 0,
+  IPPROTO_ICMP = 1,
+  IPPROTO_IGMP = 2,
+  IPPROTO_IPIP = 4,
+  IPPROTO_TCP = 6,
+  IPPROTO_EGP = 8,
+  IPPROTO_PUP = 12,
+  IPPROTO_UDP = 17,
+  IPPROTO_IDP = 22,
+  IPPROTO_TP = 29,
+  IPPROTO_DCCP = 33,
+  IPPROTO_IPV6 = 41,
+  IPPROTO_RSVP = 46,
+  IPPROTO_GRE = 47,
+  IPPROTO_ESP = 50,
+  IPPROTO_AH = 51,
+  IPPROTO_MTP = 92,
+  IPPROTO_BEETPH = 94,
+  IPPROTO_ENCAP = 98,
+  IPPROTO_PIM = 103,
+  IPPROTO_COMP = 108,
+  IPPROTO_SCTP = 132,
+  IPPROTO_UDPLITE = 136,
+  IPPROTO_MPLS = 137,
+  IPPROTO_ETHERNET = 143,
+  IPPROTO_RAW = 255,
+  IPPROTO_MPTCP = 262,
+  IPPROTO_MAX
+};
+
+enum {
+  SOCK_STREAM = 1,
+  SOCK_DGRAM = 2,
+  SOCK_RAW = 3,
+  SOCK_RDM = 4,
+  SOCK_SEQPACKET = 5,
+  SOCK_DCCP = 6,
+  SOCK_PACKET = 10,
+  SOCK_CLOEXEC = 02000000,
+  SOCK_NONBLOCK = 00004000
+};

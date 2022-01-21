@@ -12,3 +12,6 @@ build pause: ld minirt.o minisys.o pause.o
 
 build exchange-file.o: cc exchange-file.c | minisys.h
 build exchange-file: ld minirt.o minisys.o exchange-file.o
+
+build connect-tcp4.o: cc connect-tcp4.c | minisys.h
+build connect-tcp4: ld minirt.o minisys.o connect-tcp4.o
